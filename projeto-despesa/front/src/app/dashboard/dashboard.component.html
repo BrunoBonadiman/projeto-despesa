@@ -1,0 +1,232 @@
+<app-home></app-home>
+<div class="content-container">
+  <div class="container-fluid">
+    <h2>Dashboard</h2>
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3> R$ 0,00 </h3>
+            <p>Total de Despesas</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-list"></i>
+          </div>
+          <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3> R$ 0,00 <sup style="font-size: 20px"></sup></h3>
+            <p>Salário</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-usd"></i>
+          </div>
+          <a [routerLink]="['/cadastroSalario']" type="submit" class="small-box-footer">Cadastrar Salário <i
+              class="fa fa-usd"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>Agosto</h3>
+            <p>Mês de Referência</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>2020</h3>
+            <p>Ano de Referência</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-star"></i>
+          </div>
+          <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content white-text">
+            <div class="row">
+              <div class="col s5">
+                <form #despesaForm="ngForm" (ngSubmit)="onSubmit(despesaForm)">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="despesaService.selectDespesa._id">
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="descricao">Descrição:</label>
+                      <input type="text" name="descricao" #name="ngModel"
+                        [(ngModel)]="despesaService.selectDespesa.descricao" required class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="valor">Valor:</label>
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">R$</div>
+                        <input name="valor" #name="ngModel" [(ngModel)]="despesaService.selectDespesa.valor"
+                          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" currencyMask required
+                          class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="vencimento">Data Vencimento:</label>
+                      <input type="date" name="vencimento" #name="ngModel"
+                        [(ngModel)]="despesaService.selectDespesa.vencimento" required class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="observacao">Observação:</label>
+                    <input type="text" name="observacao" #name="ngModel"
+                      [(ngModel)]="despesaService.selectDespesa.observacao" required class="form-control">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="mes">Mês de Referência:</label>
+                      <select name="mes" #name="ngModel" [(ngModel)]="despesaService.selectDespesa.mes" required
+                        class="form-control">
+                        <option selected disabled>Selecione...</option>
+                        <option>Janeiro</option>
+                        <option>Fevereiro</option>
+                        <option>Março</option>
+                        <option>Abril</option>
+                        <option>Maio</option>
+                        <option>Junho</option>
+                        <option>Julho</option>
+                        <option>Agosto</option>
+                        <option>Setembro</option>
+                        <option>Outubro</option>
+                        <option>Novembro</option>
+                        <option>Dezembro</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="ano">Ano:</label>
+                      <select id="ano" name="ano" #name="ngModel" [(ngModel)]="despesaService.selectDespesa.ano"
+                        required class="form-control">
+                        <option selected disabled>Selecione...</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                        <option>2008</option>
+                        <option>2009</option>
+                        <option>2010</option>
+                        <option>2011</option>
+                        <option>2012</option>
+                        <option>2013</option>
+                        <option>2014</option>
+                        <option>2015</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                        <option>2029</option>
+                        <option>2030</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="status">Status:</label>
+                      <select name="status" #name="ngModel" [(ngModel)]="despesaService.selectDespesa.status" required
+                        class="form-control">
+                        <option selected disabled>Selecione...</option>
+                        <option>Pendente</option>
+                        <option>Pago</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row text-center">
+                    <div class="input-field col s12">
+                      <button class="btn btn-default right" type="button" (click)="resetForm(despesaForm)">Limpar
+                        Formulário &nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
+                      &nbsp;
+                      <button class="btn btn-primary right" type="submit" [disabled]="!despesaForm.valid">Enviar &nbsp;
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </form>
+                <br>
+              </div>
+              <div class="col s7">
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-striped text-nowrap">
+                    <thead>
+                      <tr>
+                        <th class="text-left">Descrição</th>
+                        <th class="text-center">Valor</th>
+                        <th class="text-center">Vencimento</th>
+                        <th class="text-center">Mês / Ano</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-left">Observação</th>
+                        <th class="text-center">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let despesa of despesaService.despesas">
+                        <td class="text-left">
+                          <div>{{despesa.descricao | uppercase}}</div>
+                        </td>
+                        <td class="text-center">
+                          <div>{{despesa.valor | currency: 'BRL'}}</div>
+                        </td>
+                        <td class="text-center">
+                          <div>{{despesa.vencimento | date}}</div>
+                        </td>
+                        <td class="text-center">
+                          <div>{{despesa.mes}} / {{despesa.ano}}</div>
+                        </td>
+                        <td class="text-center">
+                          <div><span
+                              class="badge {{ despesa.status == 'Pendente' ? 'bg-danger' : 'bg-success' }}">{{despesa.status}}</span>
+                          </div>
+                        </td>
+                        <td class="text-left">
+                          <div>{{despesa.observacao}}</div>
+                        </td>
+                        <td>
+                          <a class="btn btn-success action-btn" data-toggle="tooltip" data-placement="top"
+                            title="Editar" (click)="onEdit(despesa)">
+                            <i class="fa fa-edit" style="color: white;"></i>
+                          </a>
+                          &nbsp;
+                          <a class="btn btn-danger action-btn" data-toggle="tooltip" data-placement="top"
+                            title="Deletar" (click)="onDelete(despesa._id,despesaForm)">
+                            <i class="fa fa-trash" style="color: white;"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<app-home></app-home>
+<div class="content-container">
+  <div class="container-fluid">
+    <h2 class="text-center">Cadastro de Salário</h2>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content white-text">
+            <div class="row">
+              <div class="col s5">
+                <form #salarioForm="ngForm" (ngSubmit)="onSubmit(salarioForm)">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="salarioService.selectSalario._id">
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="valor">Valor:</label>
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">R$</div>
+                        <input class="text-left" name="valor" #name="ngModel"
+                          [(ngModel)]="salarioService.selectSalario.valor"
+                          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" currencyMask required
+                          class="form-control" id="valor">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="mes">Mês de Referência:</label>
+                      <select id="mes" name="mes" #name="ngModel" [(ngModel)]="salarioService.selectSalario.mes"
+                        required class="form-control">
+                        <option selected disabled>Selecione...</option>
+                        <option>Janeiro</option>
+                        <option>Fevereiro</option>
+                        <option>Março</option>
+                        <option>Abril</option>
+                        <option>Maio</option>
+                        <option>Junho</option>
+                        <option>Julho</option>
+                        <option>Agosto</option>
+                        <option>Setembro</option>
+                        <option>Outubro</option>
+                        <option>Novembro</option>
+                        <option>Dezembro</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="ano">Ano:</label>
+                      <select id="mes" name="ano" #name="ngModel" [(ngModel)]="salarioService.selectSalario.ano"
+                        required class="form-control">
+                        <option selected disabled>Selecione...</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                        <option>2008</option>
+                        <option>2009</option>
+                        <option>2010</option>
+                        <option>2011</option>
+                        <option>2012</option>
+                        <option>2013</option>
+                        <option>2014</option>
+                        <option>2015</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                        <option>2029</option>
+                        <option>2030</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row text-center">
+                    <div class="input-field col s12">
+                      <button class="btn btn-default right" type="button" (click)="resetForm(salarioForm)">Limpar
+                        Formulário &nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
+                      &nbsp;
+                      <button class="btn btn-primary right" type="submit" [disabled]="!salarioForm.valid">Enviar &nbsp;
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </form>
+                <br>
+              </div>
+              <div class="col s7">
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-striped text-nowrap">
+                    <thead>
+                      <tr>
+                        <th class="text-center">Salário</th>
+                        <th class="text-center">Mês / Ano</th>
+                        <th class="text-center">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let salario of salarioService.salario">
+                        <td class="text-center">
+                          <div>{{salario.valor | currency:'BRL'}}</div>
+                        </td>
+                        <td class="text-center">
+                          <div>{{salario.mes}} / {{salario.ano}}</div>
+                        </td>
+                        <td class="text-center">
+                          <a class="btn btn-success action-btn" (click)="onEdit(salario)">
+                            <i class="fa fa-edit" style="color: white;"></i>
+                          </a>
+                          &nbsp;
+                          <a class="btn btn-danger action-btn" (click)="onDelete(salario._id, salarioForm)">
+                            <i class="fa fa-trash" style="color: white;"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

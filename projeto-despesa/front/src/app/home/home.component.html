@@ -1,0 +1,36 @@
+<div class="sidebar-container">
+  <div class="sidebar-logo">
+    <div>
+      Despesas do Bruno
+    </div>
+  </div>
+  <ul class="sidebar-navigation">
+    <li class="header">Navegação</li>
+    <li>
+      <a [routerLink]="['/dashboard']">
+        <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-history" aria-hidden="true"></i> Histórico
+      </a>
+    </li>
+    <li class="header">Menu</li>
+    <li>
+      <a [routerLink]="['/cadastro']">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastro
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/cadastroSalario']">
+        <i class="fa fa-usd" aria-hidden="true"></i> Cadastrar Salário
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="onLogout()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Sair
+      </a>
+    </li>
+  </ul>
+</div>

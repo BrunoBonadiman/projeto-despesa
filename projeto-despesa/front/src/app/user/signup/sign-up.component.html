@@ -1,0 +1,59 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Cadastre-se</h1>
+      <div class="account-wall">
+        <form class="form-signin" #signUpForm="ngForm"
+        (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+          <div class="form-group">
+                  <input type="text" name="nome" #nome="ngModel" [(ngModel)]="userService.selectedUser.nome" required
+                    [ngClass]="{'invalid-textbox' :signUpForm.submitted && !nome.valid }" id="username" tabindex="1"
+                    class="form-control" placeholder="Nome" value="">
+                </div>
+                <div class="form-group">
+                  <input type="text" #sobrenome="ngModel" [(ngModel)]="userService.selectedUser.sobrenome" required
+                    [ngClass]="{'invalid-textbox' :signUpForm.submitted && !sobrenome.valid }" name="sobrenome"
+                    id="username" tabindex="1" class="form-control" placeholder="Sobrenome" value="">
+                </div>
+                <div class="form-group">
+                  <input type="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" required
+                    [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }" name="email" id="email"
+                    tabindex="1" class="form-control" placeholder="E-mail" value="">
+                  <div class="validation" *ngIf="signUpForm.submitted && email.errors">
+                    <label *ngIf="email.errors.required" class="validation-message">Este campo é obrigatório.</label>
+                    <label *ngIf="email.errors.pattern" class="validation-message">Endereço de email inválido.</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="password" #password="ngModel" name="password"
+                    [(ngModel)]="userService.selectedUser.password"
+                    [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }" id="password" tabindex="2"
+                    class="form-control" required placeholder="Senha">
+                  <div class="validation" *ngIf="signUpForm.submitted && password.errors">
+                    <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+                    <label *ngIf="password.errors.minlength" class="validation-message">A senha deve ter entre 4 e 60
+                      caracteres.</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" #tipoConta="ngModel" required
+                    [(ngModel)]="userService.selectedUser.tipoConta" name="tipoConta" placeholder="Tipo da Conta">
+                    <option disabled>Escolher...</option>
+                    <option>Administrador</option>
+                    <option>Convidado</option>
+                  </select>
+                </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Cadastrar</button>
+        </form>
+      </div>
+      <a [routerLink]="['/signin']" class="text-center new-account">Logar! </a>
+    </div>
+  </div>
+</div>
+

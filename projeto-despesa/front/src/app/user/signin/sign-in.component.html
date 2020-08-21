@@ -1,0 +1,50 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Faça o Login e continue usando a plataforma!</h1>
+      <div class="account-wall">
+        <img class="profile-img"
+          src="../../../assets/img/user-icon-300x300.png"
+          alt="">
+        <form class="form-signin" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+          <div class="form-group">
+            <input type="email" name="email" id="email" class="form-control" #email="ngModel" [(ngModel)]="model.email"
+              required autofocus [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }"
+              placeholder="E-mail">
+            <div class="validation" *ngIf="signInForm.submitted && password.errors">
+              <label *ngIf="password.errors.required" class="validation-message">Informe um email ou número de
+                telefone válido.</label>
+            </div>
+            <div class="validation" *ngIf="signInForm.submitted && email.errors?.pattern">
+              <label class="validation-message">Endereço de email invalido.</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control" #password="ngModel"
+              [(ngModel)]="model.password" required minlength="4" maxlength="60"
+              [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }" placeholder="Senha">
+            <div class="validation" *ngIf="signInForm.submitted && password.errors">
+              <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+            </div>
+            <div class="validation" *ngIf="signInForm.submitted && password.errors?.minlength">
+              <label class="validation-message">A senha deve ter entre 4 e 60 caracteres.</label>
+            </div>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Entrar</button>
+          <label class="checkbox pull-left">
+            <input type="checkbox" value="remember-me">
+            Lembre-se de mim
+          </label>
+          <a href="#" class="pull-right need-help">Precisa de ajuda? </a><span class="clearfix"></span>
+        </form>
+      </div>
+      <a [routerLink]="['/signup']" class="text-center new-account">Cadastre-se! </a>
+    </div>
+  </div>
+</div>

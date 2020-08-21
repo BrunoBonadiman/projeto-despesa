@@ -1,0 +1,114 @@
+<app-home></app-home>
+<div class="content-container">
+  <div class="container-fluid">
+    <h2 class="text-center">Cadastro de Despesas</h2>
+    <div class="card">
+      <div class="card-body">
+        <form #despesaForm="ngForm" (ngSubmit)="despesaForm.valid && onSubmit(despesaForm)">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="id">Id:</label>
+              <input type="text" name="id" #id="ngModel" [(ngModel)]="despesaService.selectDespesa._id" disabled
+                class="form-control" id="id">
+            </div>
+            <div class="form-group col-md-8">
+              <label for="descricao">Descrição:</label>
+              <input type="text" name="descricao" #descricao="ngModel"
+                [(ngModel)]="despesaService.selectDespesa.descricao" required class="form-control" id="descricao">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="valor">Valor:</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">R$</div>
+                <input name="valor" #valor="ngModel" [(ngModel)]="despesaService.selectDespesa.valor"
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" currencyMask required class="form-control" id="valor">
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="vencimento">Data Vencimento:</label>
+              <input type="date" name="vencimento" #vencimento="ngModel"
+                [(ngModel)]="despesaService.selectDespesa.vencimento" required class="form-control" id="vencimento">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="observacao">Observação:</label>
+            <input type="text" name="observacao" #observacao="ngModel"
+              [(ngModel)]="despesaService.selectDespesa.observacao" required class="form-control" id="observacao">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="mes">Mês de Referência:</label>
+              <select id="mes" name="mes" #mes="ngModel" [(ngModel)]="despesaService.selectDespesa.mes" required
+                class="form-control">
+                <option selected disabled>Selecione...</option>
+                <option>Janeiro</option>
+                <option>Fevereiro</option>
+                <option>Março</option>
+                <option>Abril</option>
+                <option>Maio</option>
+                <option>Junho</option>
+                <option>Julho</option>
+                <option>Agosto</option>
+                <option>Setembro</option>
+                <option>Outubro</option>
+                <option>Novembro</option>
+                <option>Dezembro</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="ano">Ano:</label>
+              <select id="ano" name="ano" #ano="ngModel" [(ngModel)]="despesaService.selectDespesa.ano" required
+                class="form-control">
+                <option selected disabled>Selecione...</option>
+                <option>2000</option>
+                <option>2001</option>
+                <option>2002</option>
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+                <option>2006</option>
+                <option>2007</option>
+                <option>2008</option>
+                <option>2009</option>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>2026</option>
+                <option>2027</option>
+                <option>2028</option>
+                <option>2029</option>
+                <option>2030</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="status">Status:</label>
+              <select id="status" name="status" #status="ngModel" [(ngModel)]="despesaService.selectDespesa.status"
+                required class="form-control">
+                <option selected disabled>Selecione...</option>
+                <option>Pendente</option>
+                <option>Pago</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
